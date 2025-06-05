@@ -91,7 +91,7 @@
             <p class="Link"> &nbsp;//&nbsp; </p>
             <a href="https://www.x.com" class="Link">projects</a>
             <p class="Link"> &nbsp;//&nbsp; </p>
-            <a href="https://www.git.new/ssamx3" class="Link">github</a>
+            <a href="https://www.github.com/ssamx3" class="Link">github</a>
         </div>
     </div>
 

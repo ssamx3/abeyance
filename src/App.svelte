@@ -43,7 +43,7 @@
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
     .WaveTitle {
         color: #ffffff;
-        font-size: 6vw;
+        font-size: clamp(28px, 6vw, 75px);
         font-family: "VT323", monospace;
         font-weight: 400;
         letter-spacing: 0.8vw;
@@ -64,17 +64,18 @@
 
     .box {
         #background-color: #2e2e2e;
+
         border-color: #2e2e2e;
-        border-width: 10px;
+        border-width: clamp(2px, 1vw, 15px);
         border-style: dashed;
-        padding: 8vw;
+        padding: clamp(30px, 10vw, 100px);
         border-radius: 10px;
     }
 
     .Link {
         font-family: "VT323", monospace;
         font-weight: 100;
-        font-size: 2vw;
+        font-size: clamp(16px, 2vw, 25px);
     }
     .linkbox {
         align-items: center;

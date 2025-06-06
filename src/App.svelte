@@ -4,6 +4,10 @@
     import { SplitText } from "gsap/SplitText";
     import { onMount, onDestroy } from 'svelte';
     gsap.registerPlugin(SplitText);
+
+    let hoverTimelines: { [key: string]: gsap.core.Timeline } = {};
+
+
     //imports
     onMount(() => {
     gsap.from(".box", {
@@ -37,6 +41,50 @@
 
 
 
+    function handleMouseEnter(selector: string) {
+        if (hoverTimelines[selector]) {
+            hoverTimelines[selector].kill();
+        }
+
+
+        // Create a new timeline for smooth animations
+        hoverTimelines[selector] = gsap.timeline();
+
+        hoverTimelines[selector].to(selector,{
+            duration: 0.5,
+                scale: 1.2,
+                rotate: 2,
+                ease: "elastic",
+            filter:  "blur(1px)"
+        });
+
+        hoverTimelines[selector].to(selector, {
+            duration: 0.5,
+            scale: 1,
+            rotate: 0,
+            ease: "elastic.inout",
+            filter: "blur(0px)"
+        }, 0.1
+        )
+    }
+
+    /* function handleMouseLeave(selector: string) {
+        if (hoverTimelines[selector]) {
+            hoverTimelines[selector].kill();
+        }
+
+        hoverTimelines[selector] = gsap.timeline();
+
+        hoverTimelines[selector].to(selector, {
+            duration: 0.3,
+            scale: 1,
+            rotate: 0,
+            ease: "power2.out",
+            filter: "blur(0px)"
+        });
+    } */
+
+
 </script>
 
 <style>
@@ -63,7 +111,6 @@
     }
 
     .box {
-        #background-color: #2e2e2e;
 
         border-color: #2e2e2e;
         border-width: clamp(2px, 1vw, 15px);
@@ -72,12 +119,27 @@
         border-radius: 10px;
     }
 
-    .Link {
+    .Link1 {
         font-family: "VT323", monospace;
         font-weight: 100;
         font-size: clamp(16px, 2vw, 25px);
     }
-    .linkbox {
+    .Link2 {
+        font-family: "VT323", monospace;
+        font-weight: 100;
+        font-size: clamp(16px, 2vw, 25px);
+    }
+    .Link3 {
+        font-family: "VT323", monospace;
+        font-weight: 100;
+        font-size: clamp(16px, 2vw, 25px);
+    }
+    .Link4 {
+        font-family: "VT323", monospace;
+        font-weight: 100;
+        font-size: clamp(16px, 2vw, 25px);
+    }
+    .LinkBox {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -86,13 +148,36 @@
 
 <main>
     <div class="box">
-        <h2 class="WaveTitle">abeyance</h2>
-        <div class="linkbox">
-            <a href="https://www.google.com" class="Link">blog</a>
-            <p class="Link"> &nbsp;//&nbsp; </p>
-            <a href="https://www.x.com" class="Link">projects</a>
-            <p class="Link"> &nbsp;//&nbsp; </p>
-            <a href="https://www.github.com/ssamx3" class="Link">github</a>
+        <h1 class="WaveTitle"
+            on:mouseenter={() => handleMouseEnter(".WaveTitle")}
+
+        >
+            ssamx3
+        </h1>
+
+        <div class="LinkBox">
+            <a href="https://www.google.com"
+               class="Link1"
+               on:mouseenter={() => handleMouseEnter(".Link1")}
+
+            >
+                blog</a>
+
+            <p class="Link4"> &nbsp;//&nbsp; </p>
+
+            <a href="https://www.x.com" class="Link2"
+               on:mouseenter={() => handleMouseEnter(".Link2")}
+
+            >
+                projects</a>
+
+            <p class="Link4"> &nbsp;//&nbsp; </p>
+            <a href="https://www.github.com/ssamx3 "
+               class="Link3"
+               on:mouseenter={() => handleMouseEnter(".Link3")}
+
+            >
+                github</a>
         </div>
     </div>
 

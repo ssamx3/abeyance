@@ -107,6 +107,7 @@
         min-height: 100vh;
         width: 100vw;
         margin: 0;
+        background: rgb(10,10,10);
         background: radial-gradient(circle, rgb(92, 73, 99) 0%, rgba(10, 10, 10, 1) 100%);
     }
 

@@ -86,6 +86,15 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    :global(html, body) {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+
     .WaveTitle {
         color: #ffffff;
         font-size: clamp(28px, 6vw, 75px);
@@ -152,9 +161,15 @@
         display: flex;
         flex-direction: row;
     }
+
+    #app {
+        height: 100%;
+        width: 100%;
+    }
 </style>
 
-<main data-tilt>
+<main>
+
     <div class="box" >
         <h1 class="WaveTitle"
             on:mouseenter={() => handleMouseEnter(".WaveTitle")}

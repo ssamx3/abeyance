@@ -3,6 +3,7 @@
     import { gsap } from 'gsap';
     import { SplitText } from "gsap/SplitText";
     import { onMount, onDestroy } from 'svelte';
+    import VanillaTilt from "vanilla-tilt";
     gsap.registerPlugin(SplitText);
 
     let hoverTimelines: { [key: string]: gsap.core.Timeline } = {};
@@ -37,7 +38,16 @@
                 });
             }
         });
+    VanillaTilt.init(document.querySelector(".box"), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+        easing:"cubic-bezier(.03,.98,.52,.99)",
+        transition: true
     })
+    })
+
 
 
 
@@ -52,15 +62,17 @@
 
         hoverTimelines[selector].to(selector,{
             duration: 0.5,
-                scale: 1.2,
-                rotate: 2,
+                y: -10,
+                rotate: 0,
+            scaleX: 0.9,
                 ease: "elastic",
             filter:  "blur(1px)"
         });
 
         hoverTimelines[selector].to(selector, {
             duration: 0.5,
-            scale: 1,
+            y: 0,
+            scaleX: 1,
             rotate: 0,
             ease: "elastic.inout",
             filter: "blur(0px)"
@@ -68,21 +80,6 @@
         )
     }
 
-    /* function handleMouseLeave(selector: string) {
-        if (hoverTimelines[selector]) {
-            hoverTimelines[selector].kill();
-        }
-
-        hoverTimelines[selector] = gsap.timeline();
-
-        hoverTimelines[selector].to(selector, {
-            duration: 0.3,
-            scale: 1,
-            rotate: 0,
-            ease: "power2.out",
-            filter: "blur(0px)"
-        });
-    } */
 
 
 </script>
@@ -97,45 +94,55 @@
         letter-spacing: 0.8vw;
         font-optical-sizing: auto;
         padding: 0;
+        margin: 0;
     }
 
     main {
         font-family: sans-serif;
         display: flex;
         flex-direction: column;
+
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         width: 100vw;
         margin: 0;
+        background: radial-gradient(circle, rgb(92, 73, 99) 0%, rgba(10, 10, 10, 1) 100%);
     }
 
     .box {
 
-        border-color: #2e2e2e;
-        border-width: clamp(2px, 1vw, 15px);
-        border-style: dashed;
-        padding: clamp(30px, 10vw, 100px);
-        border-radius: 10px;
+        border-color: rgba(255, 255, 255, 0.3);
+        border-style: solid;
+
+        border-width: clamp(2px, 0.5vw, 15px);
+        backdrop-filter: blur(50px);
+        padding: clamp(20px,10vw, 500px);
+        border-radius: 25px;
+
     }
 
     .Link1 {
         font-family: "VT323", monospace;
+        color: white;
         font-weight: 100;
         font-size: clamp(16px, 2vw, 25px);
     }
     .Link2 {
         font-family: "VT323", monospace;
+        color: white;
         font-weight: 100;
         font-size: clamp(16px, 2vw, 25px);
     }
     .Link3 {
         font-family: "VT323", monospace;
+        color: white;
         font-weight: 100;
         font-size: clamp(16px, 2vw, 25px);
     }
     .Link4 {
         font-family: "VT323", monospace;
+        color: white;
         font-weight: 100;
         font-size: clamp(16px, 2vw, 25px);
     }
@@ -146,8 +153,8 @@
     }
 </style>
 
-<main>
-    <div class="box">
+<main data-tilt>
+    <div class="box" >
         <h1 class="WaveTitle"
             on:mouseenter={() => handleMouseEnter(".WaveTitle")}
 
@@ -165,7 +172,7 @@
 
             <p class="Link4"> &nbsp;//&nbsp; </p>
 
-            <a href="https://www.x.com" class="Link2"
+            <a href="https://www.google.com" class="Link2"
                on:mouseenter={() => handleMouseEnter(".Link2")}
 
             >
@@ -178,9 +185,9 @@
 
             >
                 github</a>
+
         </div>
     </div>
-
 
 
 </main>

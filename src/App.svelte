@@ -182,7 +182,7 @@
         </h1>
 
         <div class="LinkBox">
-            <a href="https://www.google.com"
+            <a href="https://blog.abeyance.space"
                class="Link1"
                on:mouseenter={() => handleMouseEnter(".Link1")}
 
@@ -191,7 +191,7 @@
 
             <p class="Link4"> &nbsp;//&nbsp; </p>
 
-            <a href="https://www.google.com" class="Link2"
+            <a href="https://blog.abeyance.space/blog/tag/projects" class="Link2"
                on:mouseenter={() => handleMouseEnter(".Link2")}
 
             >
